@@ -28,7 +28,7 @@ def analyze_sentiment(content):
     # Calculate percentages
     total = sum(results.values())
     percentages = {
-        sentiment: f"{count / total * 100:.2f}% ({count}/{total})"
+        sentiment: str(round(count / total * 100, 2)) + "% (" + str(count) + "/" + str(total) + ")"
         for sentiment, count in results.items()
     }
     return percentages
@@ -40,7 +40,7 @@ def process_event(event):
     if content:
         sentiment_results = analyze_sentiment(content)
         # Combine results into a readable string
-        return f"Sentiment Analysis Results: {sentiment_results}"
+        return "Sentiment Analysis Results: " + str(sentiment_results)
     else:
         return "No content available for sentiment analysis."
 
